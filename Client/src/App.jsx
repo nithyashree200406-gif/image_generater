@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import { AppContext } from './context/AppContext';
 
-
+console.log(import.meta.env.VITE_BACKEND_URL);
 const App = () => {
 
 const {showLogin} = useContext(AppContext)
