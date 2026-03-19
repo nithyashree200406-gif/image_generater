@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     origin: "https://imagegenerator-tan.vercel.app/",
-    withCredentials: true
+    Credentials: true
 }));
 
 app.get('/', (req, res) => {
