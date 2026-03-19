@@ -14,11 +14,11 @@ const AppContextProvider = (props) => {
 
     const navigate = useNavigate();
 
-    // ✅ FIXED: fallback added
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://imagegenerator-s2dn.onrender.com";
+    // ✅ FINAL FIX: safe + trimmed URL
+    const backendUrl =
+        (import.meta.env.VITE_BACKEND_URL || "https://imagegenerator-s2dn.onrender.com").trim();
 
-    // ✅ DEBUG (remove later if you want)
-    console.log("Backend URL:", backendUrl);
+    console.log("Backend URL:", backendUrl); // debug
 
     // 🔹 Load credits
     const loadCreditsData = async () => {
@@ -74,7 +74,7 @@ const AppContextProvider = (props) => {
         setUser(null);
     };
 
-    // 🔹 Auto load credits when token exists
+    // 🔹 Auto load credits
     useEffect(() => {
         if (token) {
             loadCreditsData();
