@@ -80,7 +80,7 @@ useEffect(()=>{
             <p className='text-sm'>Welcome back! please sign in to continue</p>
 
             {state != 'Login' && <div className='border px-6 py-2 flex items-center gap-2 rounded-full mt-5'>
-                <img src={assets.user_icon} alt="" />
+                <img  className="h-6.5 w-6"src={assets.profile_icon} alt="" />
                 <input onChange={e=>setName(e.target.value)} value={name} type="text" className='outline-none text-sm' placeholder='Full Name' required />
             </div>}
 

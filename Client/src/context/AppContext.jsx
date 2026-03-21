@@ -14,19 +14,19 @@ const AppContextProvider = (props) => {
 
     const navigate = useNavigate();
 
-    // ✅ FINAL FIX: safe + trimmed URL
+    
     const backendUrl =
-        (import.meta.env.VITE_BACKEND_URL || "https://imagegenerator-s2dn.onrender.com").trim();
+        (import.meta.env.VITE_BACKEND_URL || "http://localhost:4000").trim();
 
-    console.log("Backend URL:", backendUrl); // debug
+    console.log("Backend URL:", backendUrl); 
 
-    // 🔹 Load credits
+   
     const loadCreditsData = async () => {
         try {
             const { data } = await axios.post(
                 `${backendUrl}/api/user/credits`,
                 {},
-                { headers: { token } }
+                { headers: {token} }
             );
 
             if (data.success) {
@@ -40,7 +40,7 @@ const AppContextProvider = (props) => {
         }
     };
 
-    // 🔹 Generate Image
+    
     const generateImage = async (prompt) => {
         try {
             const { data } = await axios.post(
@@ -67,14 +67,12 @@ const AppContextProvider = (props) => {
         }
     };
 
-    // 🔹 Logout
+   
     const logout = () => {
         localStorage.removeItem('token');
         setToken('');
         setUser(null);
     };
-
-    // 🔹 Auto load credits
     useEffect(() => {
         if (token) {
             loadCreditsData();
